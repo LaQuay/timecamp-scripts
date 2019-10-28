@@ -1,5 +1,5 @@
 # timecamp-scripts
-Automatize the working ours in Timecamp
+Automatize the working hours in Timecamp
 
 ## Instructions for `default.js`
 
