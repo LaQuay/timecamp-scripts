@@ -12,44 +12,39 @@ javascript: (function() {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 201) {
-                alert("Time entry created OK");
-                location.reload();
+                data = JSON.parse(data);
+                alert(`Time entry created OK ${data.date}, ${data.start_time} - ${data.end_time}`);
             } else if (xhr.readyState === 4 && xhr.status === 403) {
                 alert("An error ocurred");
             }
         };
         xhr.send(data);
     }
-
     if (!location.href.includes("timecamp")) {
         open('https://www.timecamp.com/app#/timesheets/graphical');
     } else {
         var url = "https://www.timecamp.com/third_party/api/entries/format/json/api_token/" + api_token;
-
         var today = new Date();
         var actual_date = today.getFullYear() + '-' + pad_to_two_digits(today.getMonth() + 1) + '-' + pad_to_two_digits(today.getDate());
-
         var default_working_time = prompt('Normal work day? (9 - 13 and 14 - 18)', "YES");
         if (default_working_time === "YES") {
+            var date = prompt('For which date?', actual_date);
             var data = JSON.stringify({
-                "date": actual_date,
+                "date": date,
                 "duration": 4 * 60 * 60,
                 "start_time": "09:00:00",
                 "end_time": "13:00:00",
                 "task_id": task_jornada_laboral
             });
             sendPostToTimecamp(url, data);
-
             var data = JSON.stringify({
-                "date": actual_date,
+                "date": date,
                 "duration": 4 * 60 * 60,
                 "start_time": "14:00:00",
                 "end_time": "18:00:00",
                 "task_id": task_jornada_laboral
             });
             sendPostToTimecamp(url, data);
-
-            location.reload();
         } else {
             var date = prompt('Day of this time-entry', actual_date);
             var actual_time = pad_to_two_digits(today.getHours()) + ":" + pad_to_two_digits(today.getMinutes()) + ":" + pad_to_two_digits(today.getSeconds());
@@ -66,8 +61,6 @@ javascript: (function() {
                 "task_id": task_id
             });
             sendPostToTimecamp(url, data);
-
-            location.reload();
         }
     }
 })();
