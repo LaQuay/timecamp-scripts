@@ -15,6 +15,6 @@ data = {
 }
 
 # Example for POST time-entry request
-response = requests.post(f"https://www.timecamp.com/third_party/api/entries/format/json/api_token/{api_token}", json = data)
+response = requests.post(f"https://app.timecamp.com/third_party/api/entries/format/json/api_token/{api_token}", json = data)
 
 print (response.json())
