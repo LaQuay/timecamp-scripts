@@ -23,7 +23,7 @@ javascript: (function() {
     if (!location.href.includes("timecamp")) {
         open('https://www.timecamp.com/app#/timesheets/graphical');
     } else {
-        var url = "https://api.timecamp.com/third_party/api/entries/format/json/api_token/" + api_token;
+        var url = "https://app.timecamp.com/third_party/api/entries/format/json/api_token/" + api_token;
         var today = new Date();
         var actual_date = today.getFullYear() + '-' + pad_to_two_digits(today.getMonth() + 1) + '-' + pad_to_two_digits(today.getDate());
         var default_working_time = prompt('Normal work day? (9 - 13 and 14 - 18)', "YES");
