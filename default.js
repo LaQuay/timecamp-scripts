@@ -37,14 +37,14 @@ javascript: (function() {
                 "task_id": task_jornada_laboral
             });
             sendPostToTimecamp(url, data);
-            var data = JSON.stringify({
+            /*var data = JSON.stringify({
                 "date": date,
                 "duration": 4 * 60 * 60,
                 "start_time": "14:00:00",
                 "end_time": "18:00:00",
                 "task_id": task_jornada_laboral
             });
-            sendPostToTimecamp(url, data);
+            sendPostToTimecamp(url, data);*/
         } else {
             var date = prompt('Day of this time-entry', actual_date);
             var actual_time = pad_to_two_digits(today.getHours()) + ":" + pad_to_two_digits(today.getMinutes()) + ":" + pad_to_two_digits(today.getSeconds());
