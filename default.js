@@ -26,14 +26,14 @@ javascript: (function() {
         var url = "https://app.timecamp.com/third_party/api/entries/format/json/api_token/" + api_token;
         var today = new Date();
         var actual_date = today.getFullYear() + '-' + pad_to_two_digits(today.getMonth() + 1) + '-' + pad_to_two_digits(today.getDate());
-        var default_working_time = prompt('Normal work day? (9 - 13 and 14 - 18)', "YES");
+        var default_working_time = prompt('Normal work day? (9 - 14)', "YES");
         if (default_working_time === "YES") {
             var date = prompt('For which date?', actual_date);
             var data = JSON.stringify({
                 "date": date,
                 "duration": 4 * 60 * 60,
                 "start_time": "09:00:00",
-                "end_time": "13:00:00",
+                "end_time": "14:00:00",
                 "task_id": task_jornada_laboral
             });
             sendPostToTimecamp(url, data);
